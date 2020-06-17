@@ -17,7 +17,19 @@
 # Tell the user we have started processing
 echo "Rolling..."
 # roll the dice and save the results
-die1=$(( RANDOM % 6 + 1))
 die2=$(( RANDOM % 6 + 1 ))
+range=6
+bias=1
+die1=$(( RANDOM % $range + $bias))
+die2=$(( RANDOM % $range + $bias ))
+
 # display the results
 echo "Rolled $die1, $die2"
+
+
+# sum up the rolls
+sum=$(( die1 + die2 ))
+#average
+avg=$(($sum/2))
+# display the results
+echo "Rolled $die1, $die2 for sum: $sum and average: $avg"
