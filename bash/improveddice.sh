@@ -17,7 +17,6 @@
 # Tell the user we have started processing
 echo "Rolling..."
 # roll the dice and save the results
-die2=$(( RANDOM % 6 + 1 ))
 range=6
 bias=1
 die1=$(( RANDOM % $range + $bias))
