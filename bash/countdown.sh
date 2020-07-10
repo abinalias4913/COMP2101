@@ -19,7 +19,8 @@ numberOfSleeps=10 # how many sleeps to wait for before quitting for inactivity
 #   error-message ["some text to print to stderr"]
 #
 function error-message {
-        local prog=`basename $0`
+        local prog
+        prog=`basename $0`
         echo "${prog}: ${1:-Unknown Error - a moose bit my sister once...}" >&2
 }
 
@@ -46,7 +47,7 @@ function interrupt {
 }
 
 #function quit
-function quit{
+function quit {
 
   stty sane
   sleepCount=0
@@ -101,7 +102,10 @@ fi
 
 sleepCount=$numberOfSleeps
 
-doCountdown|dialog --gauge "Remaining Time" 7 60
-stty sane
+while [ $sleepCount -gt 0 ]; do
+  echo $((sleepCount * 100 / $numberOfSleeps))|dialog --gauge "Remaining Time" 7 60
+  sleepCount=$((sleepCount - 1))
+  sleep $sleepTime
+done
 
 echo "Wait counter expired, exiting peacefully"
