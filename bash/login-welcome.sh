@@ -20,9 +20,8 @@
 title="Overlord"
 
 #echo "Enter the name:"
-#read USER
 
-USER=Abin
+
 
 hostname=$(hostname)
 
